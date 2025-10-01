@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>CSS Layouts & Responsive Web Design</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="A responsive multi-section page using CSS Grid, Flexbox, and media queries.">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <!-- Header (flex for brand + nav alignment) -->
+  <header class="site-header">
+    <div class="brand">
+      <img src="https://via.placeholder.com/40" alt="" width="40" height="40" />
+      <span>RWD Demo</span>
+    </div>
+
+    <nav class="primary-nav" aria-label="Primary">
+      <ul>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#articles">Articles</a></li>
+        <li><a href="#sidebar">Sidebar</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero / intro -->
+  <section class="hero">
+    <div class="hero-inner">
+      <h1>Layouts that scale beautifully</h1>
+      <p>Built with modern CSS: Grid for page structure, Flexbox for components, and media queries for a smooth, mobile-first experience.</p>
+      <a class="cta" href="#features">Explore the layout</a>
+    </div>
+  </section>
+
+  <!-- Main grid layout (Grid: sidebar | content | aside) -->
+  <main id="main" class="layout" aria-label="Page layout">
+    <!-- Sidebar -->
+    <aside id="sidebar" class="sidebar" aria-labelledby="sidebar-title">
+      <h2 id="sidebar-title">Sidebar</h2>
+      <nav aria-label="Secondary">
+        <ul class="stack">
+          <li><a href="#features">Feature cards</a></li>
+          <li><a href="#articles">Article list</a></li>
+          <li><a href="#footer">Footer links</a></li>
+        </ul>
+      </nav>
+
+      <div class="sidebar-card">
+        <h3>Tip</h3>
+        <p>Resize the window to see the grid collapse from 3 columns → 2 → 1.</p>
+      </div>
+    </aside>
+
+    <!-- Main content -->
+    <section id="content" class="content" aria-labelledby="content-title">
+      <h2 id="content-title">Responsive Content</h2>
+
+      <!-- Flexbox: card row that wraps on small screens -->
+      <section id="features" class="cards" aria-labelledby="features-title">
+        <h3 id="features-title">Feature Cards (Flexbox)</h3>
+
+        <article class="card">
+          <img src="https://via.placeholder.com/600x360" alt="Abstract graphic" />
+          <h4>Clean structure</h4>
+          <p>Use Grid for macro layout, Flexbox for rows of components like these cards.</p>
+          <a class="btn" href="#">Learn more</a>
+        </article>
+
+        <article class="card">
+          <img src="https://via.placeholder.com/600x360" alt="Gradient tiles" />
+          <h4>Fluid by default</h4>
+          <p>Relative units (<code>rem</code>, <code>%</code>) and flexible tracks keep things adaptive.</p>
+          <a class="btn btn-outline" href="#">Docs</a>
+        </article>
+
+        <article class="card">
+          <img src="https://via.placeholder.com/600x360" alt="Colorful shapes" />
+          <h4>Accessible & fast</h4>
+          <p>Semantic HTML, sensible contrast, and no JS required for layout.</p>
+          <a class="btn" href="#">Get started</a>
+        </article>
+      </section>
+
+      <!-- Simple article list to show flowing content -->
+      <section id="articles" class="articles" aria-labelledby="articles-title">
+        <h3 id="articles-title">Latest Articles</h3>
+        <article class="post">
+          <h4>Designing for small screens first</h4>
+          <p>Mobile-first helps you prioritize essential content and progressively enhance for larger viewports.</p>
+        </article>
+        <article class="post">
+          <h4>Choosing between Grid and Flexbox</h4>
+          <p>Use Grid for two-dimensional page areas; Flexbox shines for one-dimensional alignment inside those areas.</p>
+        </article>
+      </section>
+    </section>
+
+    <!-- Complementary aside -->
+    <aside class="aside" aria-labelledby="aside-title">
+      <h2 id="aside-title">Quick Stats</h2>
+      <ul class="stats">
+        <li><strong>3</strong> breakpoints</li>
+        <li><strong>2</strong> layout systems</li>
+        <li><strong>0</strong> frameworks</li>
+      </ul>
+
+      <figure class="promo">
+        <img src="https://via.placeholder.com/560x320" alt="Promo illustration">
+        <figcaption>Images scale with <code>max-width: 100%</code> and <code>height: auto</code>.</figcaption>
+      </figure>
+    </aside>
+  </main>
+
+  <!-- Footer -->
+  <footer id="footer" class="site-footer" aria-label="Footer">
+    <p>&copy; <time datetime="2025">2025</time> RWD Demo • Built with CSS Grid & Flexbox</p>
+    <nav aria-label="Footer links">
+      <ul class="footer-links">
+        <li><a href="#top">Top</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#articles">Articles</a></li>
+      </ul>
+    </nav>
+  </footer>
+</body>
+</html>

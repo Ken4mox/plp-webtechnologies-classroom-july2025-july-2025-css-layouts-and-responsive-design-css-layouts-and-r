@@ -1,0 +1,267 @@
+/* =============== */
+/* Base & tokens   */
+/* =============== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #0b1020;
+  --panel: #0f172a;     /* slate-900 */
+  --panel-2: #111827;   /* gray-900 */
+  --text: #e5e7eb;      /* gray-200 */
+  --muted: #a3aed0;     /* soft gray-blue */
+  --brand: #22c55e;     /* green-500 */
+  --brand-2: #16a34a;   /* green-600 */
+  --border: #1f2937;    /* gray-800 */
+  --shadow: 0 10px 30px rgba(0,0,0,.35);
+
+  --radius: 14px;
+  --container: 1200px;
+
+  --space-1: .5rem;
+  --space-2: .75rem;
+  --space-3: 1rem;
+  --space-4: 1.5rem;
+  --space-5: 2rem;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  color: var(--text);
+  background: radial-gradient(1200px 600px at 15% 10%, #0f1938 0, transparent 55%),
+              linear-gradient(180deg, var(--bg) 0, var(--panel-2) 100%);
+  font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+
+img {
+  max-width: 100%;
+  height: auto;          /* responsive images */
+  display: block;
+  border-radius: calc(var(--radius) - 6px);
+}
+
+/* Skip link for keyboard users */
+.skip-link {
+  position: absolute; left: -9999px;
+}
+.skip-link:focus {
+  left: 8px; top: 8px; z-index: 9999;
+  background: #fff; color: #111; padding: .5rem .75rem; border-radius: 8px;
+}
+
+/* =============== */
+/* Header (Flex)   */
+/* =============== */
+.site-header {
+  display: flex;               /* Flexbox used here */
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  background: var(--panel);
+  border-bottom: 1px solid var(--border);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-weight: 700;
+}
+
+.primary-nav ul {
+  display: flex;              /* Flexbox for nav list */
+  list-style: none;
+  gap: var(--space-2);
+  margin: 0; padding: 0;
+}
+
+.primary-nav a {
+  color: var(--text);
+  text-decoration: none;
+  padding: .5rem .8rem;
+  border-radius: 8px;
+}
+.primary-nav a:hover,
+.primary-nav a:focus {
+  background: var(--border);
+}
+
+/* =============== */
+/* Hero            */
+/* =============== */
+.hero {
+  padding: var(--space-5) var(--space-4);
+  background:
+    radial-gradient(600px 300px at 80% -10%, #09422755 10%, transparent 70%),
+    linear-gradient(180deg, transparent, #0a152e 70%);
+  border-bottom: 1px solid var(--border);
+}
+.hero-inner {
+  max-width: var(--container);
+  margin-inline: auto;
+}
+.hero h1 {
+  font-size: clamp(1.6rem, 2.8vw + 1rem, 2.6rem);
+  margin: 0 0 .25rem 0;
+}
+.hero p {
+  color: var(--muted);
+  max-width: 60ch;
+  margin: 0 0 var(--space-3) 0;
+}
+.cta {
+  display: inline-block;
+  background: var(--brand);
+  color: #08210f;
+  padding: .7rem 1rem;
+  border-radius: 10px;
+  font-weight: 700;
+  text-decoration: none;
+  border: 1px solid var(--brand-2);
+}
+.cta:hover { background: var(--brand-2); color: #fff; }
+
+/* ================================ */
+/* Main Layout (Grid: 3-column)     */
+/* ================================ */
+.layout {
+  /* CSS Grid used for page layout */
+  display: grid;
+  grid-template-columns: 260px 1fr 320px;    /* sidebar | content | aside */
+  grid-template-areas:
+    "sidebar content aside";
+  gap: var(--space-4);
+  max-width: var(--container);
+  padding: var(--space-4);
+  margin: 0 auto var(--space-5);
+}
+
+.sidebar   { grid-area: sidebar; }
+.content   { grid-area: content; }
+.aside     { grid-area: aside; }
+
+.sidebar, .content, .aside {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: var(--space-4);
+}
+
+/* Utility */
+.stack { padding-left: 1rem; }
+.stack li + li { margin-top: .35rem; }
+
+/* Sidebar bits */
+.sidebar-card {
+  margin-top: var(--space-4);
+  background: #0a1328;
+  border-left: 4px solid var(--brand);
+  padding: .75rem 1rem;
+  border-radius: 10px;
+}
+
+/* =============== */
+/* Cards (Flex)    */
+/* =============== */
+.cards {
+  display: flex;              /* Flexbox used for card row */
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  align-items: stretch;
+  margin-bottom: var(--space-5);
+}
+
+.card {
+  flex: 1 1 280px;            /* grow/shrink, min width */
+  background: #0b1226;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: var(--space-3);
+  display: grid;
+  gap: var(--space-2);
+}
+
+.card h4 { margin: .25rem 0 .25rem; }
+.card p  { color: var(--muted); margin: 0 0 .25rem; }
+
+.btn {
+  justify-self: start;
+  text-decoration: none;
+  padding: .55rem .85rem;
+  border-radius: 10px;
+  background: var(--brand);
+  color: #08210f;
+  border: 1px solid var(--brand-2);
+  font-weight: 700;
+}
+.btn:hover { background: var(--brand-2); color: #fff; }
+.btn-outline {
+  background: transparent;
+  color: var(--text);
+  border-color: var(--border);
+}
+.btn-outline:hover { background: var(--border); }
+
+/* Articles */
+.articles .post + .post { margin-top: var(--space-3); }
+.articles .post h4 { margin: 0 0 .25rem; }
+
+/* Aside */
+.stats {
+  list-style: none; padding: 0; margin: 0 0 var(--space-4) 0;
+  display: grid; gap: .5rem;
+}
+.stats strong { color: var(--brand); }
+
+/* =============== */
+/* Footer          */
+/* =============== */
+.site-footer {
+  border-top: 1px solid var(--border);
+  padding: var(--space-4);
+  background: var(--panel);
+  display: grid;
+  gap: var(--space-2);
+  justify-items: center;
+}
+.footer-links {
+  list-style: none; padding: 0; margin: 0;
+  display: flex; gap: var(--space-2);
+}
+.footer-links a { color: var(--text); text-decoration: none; }
+.footer-links a:hover { text-decoration: underline; }
+
+/* ===================== */
+/* Media queries (RWD)   */
+/* ===================== */
+
+/* Tablet: collapse to 2 columns (sidebar + main) */
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: 220px 1fr;      /* sidebar | content */
+    grid-template-areas:
+      "sidebar content";
+  }
+  .aside { display: none; }                /* hide complementary aside on tablet */
+  .site-header { flex-wrap: wrap; gap: var(--space-2); }
+}
+
+/* Mobile: single column, reorder to content → sidebar */
+@media (max-width: 600px) {
+  .layout {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "content"
+      "sidebar";
+  }
+  .sidebar { order: 2; }                   /* visual hint; grid areas already define order */
+  .primary-nav ul { flex-wrap: wrap; }
+  .hero { padding: var(--space-4) var(--space-3); }
+  .site-header { padding: var(--space-2) var(--space-3); }
+}
